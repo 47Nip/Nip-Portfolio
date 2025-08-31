@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - NIP</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Custom CSS -->
+  <style>
+    /* -------------------- PROJECT GRID -------------------- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+   background: linear-gradient( rgba(173, 216, 230, 0.9), rgba(255, 255, 255, 0.9));
+
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-card h3 {
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* -------------------- MODAL STYLING -------------------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.8);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+      border-radius: 1rem;
+      max-width: 800px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      animation: slideUp 0.35s ease forwards;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-header h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    .modal-body p {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .modal-body .tech-stack {
+      margin: 1rem 0;
+      font-weight: 500;
+      color: #3b82f6;
+    }
+
+    .modal-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    #modalDesc {
+      text-align: justify;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-weight: 500;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      white-space:pre-wrap;
+      font-size: medium;
+    }
+
+    .modal-images {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 0.5rem 0;
+    }
+
+    .modal-images img {
+      height: 180px;
+      border-radius: 0.75rem;
+      flex-shrink: 0;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-images iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #e5e7eb;
+      color: #6b7280;
+      border: none;
+      font-size: 1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .modal-close:hover {
+      background: #d1d5db;
+      color: #374151;
+      transform: scale(1.05);
+    }
+
+    /* -------------------- ANIMATIONS -------------------- */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-poppins home-page">
+
+  <!-- Wrapper -->
+  <div class="flex flex-col md:flex-row">
+
+    <!-- Sidebar -->
+    <aside class="sidebar shadow-lg w-full md:w-1/4 p-6 flex flex-col items-center rounded-2xl m-4">
+      <img src="images/kali-linux-ejdertim-hacking-wallpaper-preview.jpg" alt="Profile"
+        class="w-40 h-40 object-cover mb-4 shadow rounded-full">
+      <h2 class="text-xl font-bold">Kardani Nip</h2>
+      <span class="px-3 py-1 mt-1 text-sm rounded contact-box">Web Developer / Python Developer</span>
+
+      <div class="flex space-x-4 mt-4">
+        <a href="https://github.com/47Nip" class="social-link github"><i class="fab fa-github"></i></a>
+        <a href="https://wa.me/919687265753" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/nip-kardani/" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/nip_patel_47" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <div class="mt-6 p-4 rounded-lg shadow text-left space-y-4 font-medium contact-box w-full">
+        <p><i class="fas fa-phone-alt mr-2"></i> +91 9687265753</p>
+        <p><i class="fas fa-envelope mr-2"></i> nippatel48@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt mr-2"></i> Ahmedabad, Gujarat</p>
+      </div>
+
+      <a href="KARDANI NIP.pdf" download
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg mt-6 w-full text-center">Download CV</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 shadow-lg rounded-2xl m-4 p-6 overflow-y-auto">
+
+      <!-- Navbar -->
+      <nav class="flex justify-between items-center mb-6 mt-4">
+        <button id="menuToggle" class="md:hidden text-2xl focus:outline-none">☰</button>
+        <ul id="navMenu" class="hidden md:flex space-x-4">
+          <li><a href="index.html" class="nav-link ">About</a></li>
+          <li><a href="resume.html" class="nav-link">Resume</a></li>
+          <li><a href="project.html" class="nav-link active">Projects</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- PROJECT GRID -->
+      <section>
+        <h2 class="text-2xl font-bold mb-4">My Projects</h2>
+        <div class="project-grid">
+          <div class="project-card" data-project="1">
+            <h3>Family Lock Box</h3>
+            <p>HTML, CSS, JavaScript,Python,Django</p>
+          </div>
+          <div class="project-card" data-project="2">
+            <h3>E-commerce Shopping Website </h3>
+            <p>Python, Django , HTML,CSS,JavaScript</p>
+          </div>
+          <div class="project-card" data-project="3">
+            <h3>Excel Sheet analysis</h3>
+            <p>React, Node.js,HTML,Tailwind,MongoDB</p>
+          </div>
+          <div class="project-card" data-project="4">
+            <h3>Blogify(Blog WebSite)</h3>
+            <p>React, Node.js,HTML,Tailwind,MongoDB</p>
+          </div>
+          <div class="project-card" data-project="5">
+            <h3>Car Sales And Service</h3>
+            <p>HTML,CSS,JavaScript,PHP,PHP My Admin </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODAL -->
+      <div class="modal" id="projectModal">
+        <div class="modal-content">
+          <button class="modal-close">&times;</button>
+          <div class="modal-header">
+            <h2 id="modalTitle">Project Title</h2>
+          </div>
+          <div class="modal-body">
+            <p class="tech-stack" id="modalTech">Tech Stack</p>
+            <h3>Project Description</h3>
+            <p id="modalDesc">Project description goes here.</p>
+            <div class="modal-images" id="modalImages">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-8 text-center text-sm">
+        © 2025 All Rights Reserved by elite-themes24.
+      </footer>
+    </main>
+  </div>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- JS for modal -->
+  <script>
+    const projects = {
+      1: {
+        title: "Family Lock Box",
+        tech: "HTML, CSS, JavaScript, Python, Django",
+        desc: "Family Lock Box is a secure web application designed to help users manage and share sensitive documents safely within trusted circles. The platform allows users to register, log in, and manage their personal profiles while uploading and organizing important documents. Each profile generates a unique access code, which acts as a secure identifier. By sharing this code, users can grant their family members or friends access to view uploaded documents, ensuring that vital information can be accessed when needed.\n Beyond individual sharing, Family Lock Box introduces a collaborative feature where friends or family can join groups using shared codes. Each group is personalized for its members, making it easier to organize and share files collectively. The dedicated “Groups” page displays all the groups a user belongs to, creating a simple yet powerful way to connect and securely share information across trusted networks. This project highlights user authentication, secure file management, and group-based access control in a practical and user-friendly manner.",
+        video: "https://drive.google.com/file/d/11kC_M_6aifzczF6azRxtp-RsN1z_2C8d/view?usp=drive_link"
+      },
+      2: {
+        title: "E-commerce Shopping Website",
+        tech: "Python, Django , HTML, CSS, JavaScript",
+        desc: "E-Commerce Website is a full-featured online shopping platform for electronics that lets users register, log in, browse a rich product catalog (mobiles, TVs, laptops, and more), and apply powerful filters by price, color, and category. Shoppers can view detailed product pages, add items to the cart, and see a running subtotal with taxes included at checkout. The checkout flow collects shipping details, supports multiple saved addresses, and integrates a Razorpay test-mode payment gateway to simulate secure online payments. After confirming payment, the order summary displays a clear breakdown of items, quantities, taxes, and the final payable amount.\n On the back office side, an admin dashboard centralizes operations with tools to manage products, inventory, and orders. Admins can verify payments, mark orders as confirmed or on hold, remove items when stock is unavailable, and review transaction references from Razorpay. Useful touches include searchable and paginated product listings, recent-views on the product page, a mini-cart for quick edits, and basic order-status notifications to improve the overall shopping experience.",
+        video: "https://drive.google.com/file/d/1VKuzAlBMJHp3cyBpr3QGC2rdpsTsqk7P/view?usp=sharing"
+      },
+      3: {
+        title: "Excel Sheet analysis",
+        tech: " React, Node.js, HTML, Tailwind, MongoDB",
+        desc: "Excel Sheet Analysis is a data visualization and analysis tool that empowers users to work directly with CSV or Excel files. After logging in, users can upload datasets and instantly preview the data inside the application. By selecting X and Y axis columns along with a preferred chart type (bar, line, scatter, etc.), the platform generates interactive visualizations on the fly. The charts update dynamically on the right-hand side, helping users quickly uncover patterns and insights. To support reporting, each chart can be downloaded in both PDF and PNG formats for easy sharing.\nOn the administrative side, the system uses JWT-based authentication to ensure secure access and role management. Admins have the ability to manage user accounts and respond to queries submitted through the built-in contact form, making the platform both user-friendly and support-driven. This project highlights file handling, dynamic chart rendering, export functionality, and secure API authentication, creating a practical solution for individuals or organizations seeking quick data analysis without needing complex tools.",
+        video: "https://drive.google.com/file/d/1QNF5IZX-AUH8TD4voeVIeWisXeGC1rCZ/view?usp=sharing"
+      },
+      4: {
+        title: "Blogify(Blog WebSite)",
+        tech: "React, Node.js, HTML, Tailwind, MongoDB",
+        desc: "Blogify is a dynamic blogging platform that enables users to create, share, and engage with content in an interactive community. Registered users can log in, upload blogs with accompanying images, and explore posts shared by others. The platform supports social features like likes and comments, making it easy for users to interact with blog content. Even unregistered visitors can browse blogs publicly, ensuring open access to information, while authentication ensures that only verified users can upload or comment without issues. The inclusion of images in blogs enhances readability and gives posts a more engaging, professional look.\n the backend, Blogify includes a powerful admin panel where administrators can manage all uploaded blogs, oversee user accounts, and resolve queries submitted through the contact form. This combination of user engagement tools and administrative controls makes Blogify a complete solution for community-driven content sharing. It highlights features such as authentication, CRUD operations for blogs, multimedia integration, and robust admin management—all essential components of a modern content management system.",
+        video: "https://drive.google.com/file/d/1yP5SlRDa1-2X8w5b_j5aHL86lzY5DeqU/view?usp=sharing"
+      },
+      5: {
+        title: "Car Sales And Service",
+        tech: "HTML, CSS, JavaScript, PHP, PHP My Admin ",
+        desc: "Car Sales and Service is an all-in-one web platform that simplifies the process of exploring, purchasing, and maintaining vehicles. Users can register and log in to browse various car brands, view detailed information about different models, and even book test drive appointments online. The service module allows customers to select from multiple service types—ranging from routine checkups to advanced repairs—along with transparent pricing. By booking service appointments in advance, users can avoid long waiting lines at service centers and enjoy 24/7 access to request vehicle servicing at their convenience.\nThe platform also features a comprehensive admin panel, where administrators manage car inventories, track availability, and oversee all incoming requests. Admins can confirm or decline test drive bookings, handle out-of-stock scenarios, and manage service appointments to ensure smooth operations. By combining online vehicle browsing, appointment scheduling, and service management, this project delivers a complete digital solution for both car buyers and service seekers, highlighting features like authentication, appointment booking systems, and admin-controlled workflows.",
+        video: "https://drive.google.com/file/d/1wWVrvM-RMrrCNL_BLlU2Eyt-eW2R9A7S/view?usp=sharing"
+      }
+    };
+
+    const modal = document.getElementById("projectModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalTech = document.getElementById("modalTech");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalImages = document.getElementById("modalImages");
+
+    // Function to get embed URL for different platforms
+    function getEmbedUrl(url) {
+      if (url.includes('youtu.be/') || url.includes('youtube.com/watch?v=')) {
+        let videoId = '';
+        if (url.includes('youtu.be/')) {
+          videoId = url.split('youtu.be/')[1].split('?')[0];
+        } else if (url.includes('youtube.com/watch?v=')) {
+          videoId = url.split('v=')[1].split('&')[0];
+        }
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+      } else if (url.includes('drive.google.com/file/d/')) {
+        let fileId = url.split('/d/')[1].split('/')[0];
+        return `https://drive.google.com/file/d/${fileId}/preview`;
+      } else {
+        return url;
+      }
+    }
+
+    document.querySelectorAll(".project-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const id = card.getAttribute("data-project");
+        const project = projects[id];
+        modalTitle.textContent = project.title;
+        modalTech.textContent = project.tech;
+        modalDesc.textContent = project.desc;
+        if (project.video.includes("youtube.com") || project.video.includes("youtu.be") || project.video.includes("drive.google.com")) {
+          const embedUrl = getEmbedUrl(project.video);
+          modalImages.innerHTML = `<iframe width="560" height="315" src="${embedUrl}" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+        } else {
+          modalImages.innerHTML = `<video width="560" height="315" controls><source src="${project.video}" type="video/mp4">Your browser does not support the video tag.</video>`;
+        }
+        modal.classList.add("active");
+      });
+    });
+
+    document.querySelector(".modal-close").addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.remove("active");
+    });
+  </script>
+
+  <!-- Mobile Menu Toggle -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

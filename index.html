@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - NIP</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-poppins home-page">
+
+  <!-- Wrapper -->
+  <div class="flex flex-col md:flex-row">
+
+    <!-- Sidebar -->
+<aside class="sidebar shadow-lg w-full md:w-1/4 p-6 flex flex-col items-center rounded-2xl m-4">
+  <!-- Profile -->
+  <img src="images/kali-linux-ejdertim-hacking-wallpaper-preview.jpg" alt="Profile"
+    class="w-40 h-40 object-cover mb-4 shadow rounded-full">
+  <h2 class="text-xl font-bold">Kardani Nip</h2>
+  <span class="px-3 py-1 mt-1 text-sm rounded contact-box">Web Developer / Python Developer</span>
+
+  <!-- Social Links -->
+  <div class="flex space-x-4 mt-4">
+    <a href="https://github.com/47Nip" class="social-link github"><i class="fab fa-github"></i></a>
+    <a href="https://wa.me/919687265753" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/in/nip-kardani/" class="social-link linkedin"><i
+        class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/nip_patel_47?igsh=MTF1aWU2d2czdjg1YQ==" class="social-link instagram"><i
+        class="fab fa-instagram"></i></a>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="mt-6 p-4 rounded-lg shadow text-left space-y-4 font-medium contact-box w-full">
+    <p><i class="fas fa-phone-alt mr-2"></i> +91 9687265753</p>
+    <p><i class="fas fa-envelope mr-2"></i> nippatel48@gmail.com</p>
+    <p><i class="fas fa-map-marker-alt mr-2"></i> Ahmedabad, Gujarat</p>
+  </div>
+
+  <!-- CV Button -->
+  <a href="KARDANI NIP.pdf" download class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg mt-6 w-full text-center">Download
+    CV</a>
+</aside>
+
+   
+
+    <!-- Main Content -->
+    <main class="flex-1 shadow-lg rounded-2xl m-4 p-6 overflow-y-auto">
+
+      <!-- Navbar -->
+      <nav class="flex justify-between items-center mb-6 mt-4">
+        <button id="menuToggle" class="md:hidden text-2xl focus:outline-none">☰</button>
+        <ul id="navMenu" class="hidden md:flex space-x-4">
+          <li><a href="index.html" class="nav-link">About</a></li>
+          <li><a href="resume.html" class="nav-link">Resume</a></li>
+          <li><a href="project.html" class="nav-link">Projects</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- About -->
+      <section id="about">
+        <h2 class="text-2xl font-bold border-b-2 inline-block mb-4">About</h2>
+        <p class="mb-2">
+          A dedicated and results-driven Web Developer currently pursuing a Master of Computer Applications (MCA).
+          With a solid foundation from my Bachelor's degree (BCA), my passion lies in crafting robust and scalable web
+          solutions using Python.
+          I thrive on transforming complex problems into elegant, user-friendly applications and have demonstrated this
+          through a diverse portfolio of projects,
+          from e-commerce platforms to data analysis tools. I am eager to apply my skills to solve real-world
+          challenges.
+        </p>
+      </section>
+
+      <!-- What I Do -->
+      <section class="mt-6">
+        <h2 class="text-xl font-bold mb-4">What I Do!</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl shadow service-card">
+            🌐 <b>Web Design</b><br> Creating modern, responsive, and user-friendly website designs.
+            <br><small>HTML • CSS • JavaScript • Tailwind CSS • Responsive Design</small>
+          </div>
+          <div class="p-4 rounded-xl shadow service-card">
+            💻 <b>Web Development</b><br> Building high-performance and scalable websites & applications.
+            <br><small>Python • Django • HTML • CSS • JavaScript • REST API • MySQL</small>
+          </div>
+          <div class="p-4 rounded-xl shadow service-card">
+            🗄️ <b>Database Developer</b><br> Designing, optimizing, and managing relational & NoSQL databases.
+            <br><small>SQL • MySQL • MongoDB • Stored Procedures • Database Optimization</small>
+          </div>
+
+          <div class="p-4 rounded-xl shadow service-card">
+            🎨 <b>Logo Maker</b><br> Crafting unique, creative, and professional logos for brands.
+            <br><small>Canva • Beginner • Basic Video Editing </small>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Certificates -->
+      <section class="mt-8">
+        <h2 class="text-xl font-bold mb-4">Certificates</h2>
+        <div class="certificates-wrapper flex space-x-6 overflow-x-auto pb-4">
+          <img src="images/Cyber security volume 1.jpg" alt="Cyber Security Certificate" class="certificate">
+          <img src="images/Cyber Security Course -2.jpg" alt="Advanced Cyber Security Certificate" class="certificate">
+          <img src="images/Data science-intern.jpg" alt="Data Science Internship Certificate" class="certificate">
+          <img src="images/Nip accenture certificate.jpg" alt="Accenture Certificate" class="certificate">
+          <img src="images/Soft skill (SVGU).jpg" alt="Soft Skills Certificate" class="certificate">
+          <img src="images/python_certificate.png" alt="Python Programming Certificate" class="certificate">
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <div id="certModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+        <div class="rounded-lg p-4 w-3/4 max-h-[90%] overflow-auto relative">
+          <span id="closeModal" class="absolute top-4 right-4 text-3xl font-bold cursor-pointer">&times;</span>
+          <img id="modalImg" class="w-full h-auto rounded-md" alt="Certificate preview">
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-8 text-center text-sm">
+        © 2025 All Rights Reserved by elite-themes24.
+      </footer>
+    </main>
+    </div>
+  </div>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+
+  <!-- Mobile Menu Toggle -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+
+</html>
