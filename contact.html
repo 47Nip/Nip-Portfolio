@@ -17,6 +17,28 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Dark mode styles for inputs */
+    .dark input,
+    .dark textarea,
+    .dark select {
+      background-color: #4a5568;
+      color: #e2e8f0;
+      border-color: #718096;
+    }
+
+    .dark input::placeholder,
+    .dark textarea::placeholder {
+      color: #a0aec0;
+    }
+
+    .dark input:focus,
+    .dark textarea:focus {
+      border-color: #63b3ed;
+      box-shadow: 0 0 0 1px #63b3ed;
+    }
+  </style>
 </head>
 
 <body class="font-poppins home-page">

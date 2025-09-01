@@ -244,14 +244,14 @@ main::-webkit-scrollbar-thumb {
   --shadow-color: rgba(0, 0, 0, 0.1);
 
   /* Education card backgrounds */
-  --edu-1-bg: #ffe6e6;
-  --edu-2-bg: #e6f7ff;
-  --edu-3-bg: #f9f1e6;
+  --edu-1-bg: #f9f9f9;
+  --edu-2-bg: #f9f9f9;
+  --edu-3-bg: #f9f9f9;
 
   /* Experience card backgrounds */
-  --exp-1-bg: #e6ffe6;
-  --exp-2-bg: #f3e6ff;
-  --exp-3-bg: #fff5e6;
+  --exp-1-bg: #f9f9f9;
+  --exp-2-bg: #f9f9f9;
+  --exp-3-bg: #f9f9f9;
 
   /* Progress bar colors */
   --progress-bar-bg: #dbf2ff;
@@ -266,14 +266,14 @@ main::-webkit-scrollbar-thumb {
   --shadow-color: rgba(0, 0, 0, 0.5);
 
   /* Education card backgrounds - dark theme */
-  --edu-1-bg: #4a1f1f;
-  --edu-2-bg: #1f3a4a;
-  --edu-3-bg: #4a3a1f;
+  --edu-1-bg: #4a5568;
+  --edu-2-bg: #4a5568;
+  --edu-3-bg: #4a5568;
 
   /* Experience card backgrounds - dark theme */
-  --exp-1-bg: #1f4a1f;
-  --exp-2-bg: #3a1f4a;
-  --exp-3-bg: #4a3a1f;
+  --exp-1-bg: #4a5568;
+  --exp-2-bg: #4a5568;
+  --exp-3-bg: #4a5568;
 
   /* Progress bar colors - dark theme */
   --progress-bar-bg: #2d4a5a;
@@ -369,9 +369,41 @@ body.home-page {
   overflow: auto !important;
 }
 
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  body {
+    margin: 0;
+  }
+
+  .sidebar {
+    margin: 0;
+    margin:5px 10px 0 0;
+    height: auto;
+  }
+
+  aside {
+    margin: 5px 10px 10px 10px;
+  }
+
+  main {
+    margin: 20px;
+  }
+}
+
 /* Mobile active nav link styling */
 @media (max-width: 768px) {
   .nav-link.active {
+    background: none;
+    color: #667eea;
+    box-shadow: none;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+/* Dark mode mobile active nav link styling */
+@media (max-width: 768px) {
+  .dark .nav-link.active {
     background: none;
     color: #667eea;
     box-shadow: none;
